@@ -1,20 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header class="div">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Main Menu</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+<ion-content [fullscreen]="true" class="div">
+
+<div class="div">
+  <h1>Random Recipe to get you started</h1>
+  <ion-card  *ngFor="let recipe of randomRecipe">
+    <img alt="Recipe" src="{{recipe.strMealThumb}}" height="230"/>
+    <ion-card-header>
+      <ion-card-title>{{recipe.strMeal}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card [routerLink]="['/search']">
+    <img class="img" alt="Search Icon" src="..\..\assets\magnifier.png"/>
+    <ion-card-header>
+      <ion-card-title>Search for Recipes</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card [routerLink]="['/recipes']">
+    <img class="img" alt="Food Icon" src="..\..\assets\restaurant.png"/>
+    <ion-card-header>
+      <ion-card-title>Look at categories</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card [routerLink]="['/favourites']">
+    <img class="img" alt="Star Icon" src="..\..\assets\favourite.png"/>
+    <ion-card-header>
+      <ion-card-title>Browse Your Favourites</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</div>
+
 </ion-content>
+  
