@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from '../services/api.service';
 import { RouterLink } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 import { IonContent, IonHeader, IonTitle, 
   IonToolbar, IonButton, IonButtons, IonBackButton,IonInput, IonItem, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonList} from '@ionic/angular/standalone';
 
@@ -18,7 +19,9 @@ export class SearchPage implements OnInit {
   inputValue: string = "";
   recipes: any = [];
   isClicked: boolean = false;
-  constructor(private apiService: ApiService) { }
+  favRecipe:any = [];
+  i:number = 0;
+  constructor(private apiService: ApiService, private storage:Storage) { }
 
   ngOnInit() {
   }
@@ -31,5 +34,11 @@ export class SearchPage implements OnInit {
 
   toggleContent() {
     this.isClicked = !this.isClicked;
+  }
+
+  async addFavourite(recipe:any) {
+    await this.storage.create();
+    this.favRecipe = await this.storage.set(this.i.toString(), recipe);
+    this.i++;
   }
 }
