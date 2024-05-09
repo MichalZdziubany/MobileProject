@@ -1,17 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>recipes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-header>
-  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="Back to menu"></ion-back-button>
+      <ion-button [routerLink]="['/home']">Back</ion-button>
+    </ion-buttons>
+    <ion-title>Categories</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/search']">Search</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content class="ion-padding">
-  <h1>Recipes page</h1>
-  <p>Use the back button to navigate to the previous page.</p>
+  <h2 *ngIf="!isClicked">Click to expand a category</h2>
+  <div *ngIf="!isClicked">
+    <ion-card
+      *ngFor="let category of categories"
+      (click)="getSpecific(category)"
+      (click)="toggleContent()"
+    >
+      <img alt="category" src="{{category.strCategoryThumb}}" height="230" />
+      <ion-card-header>
+        <ion-card-title>{{category.strCategory}}</ion-card-title>
+        <p>{{category.strCategoryDescription}}</p>
+      </ion-card-header>
+    </ion-card>
+  </div>
+
+  <h2 *ngIf="isClicked">Click again to go back to categories</h2>
+  <ion-card *ngFor="let specific of category" (click)="toggleContent()">
+    <div *ngIf="isClicked">
+      <img alt="Recipe" src="{{specific.strMealThumb}}" height="230" />
+      <ion-card-content>{{specific.strMeal}}</ion-card-content>
+    </div>
+  </ion-card>
 </ion-content>
