@@ -20,6 +20,7 @@ export class SearchPage implements OnInit {
   recipes: any = [];
   isClicked: boolean = false;
   favRecipe:any = [];
+  userObj:any = [];
   i:number = 0;
   constructor(private apiService: ApiService, private storage:Storage) { }
 
@@ -38,7 +39,8 @@ export class SearchPage implements OnInit {
 
   async addFavourite(recipe:any) {
     await this.storage.create();
-    this.favRecipe = await this.storage.set(this.i.toString(), recipe);
+    this.userObj = JSON.stringify(recipe);
+    this.favRecipe = await this.storage.set(this.i.toString(), this.userObj);
     this.i++;
   }
 }
