@@ -23,6 +23,7 @@
         <p>Click on Image to reveal instructions</p>
       </ion-card-header>
       <ion-button (click)="addFavourite(recipe)">Click to add to favourites</ion-button>
+      <ion-button (click)="shareRecipe(recipe)">Click to share</ion-button>
     </div>
 
     <div *ngIf="isClicked" (click)="toggleContent()">
