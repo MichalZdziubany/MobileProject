@@ -8,60 +8,66 @@
   <!--If the card is clicked it changes to the steps and ingredients needed for the recipe -->
   <div class="div">
     <h1>Random Recipe to get you started</h1>
-    <ion-card *ngFor="let recipe of randomRecipe" (click)="toggleContent()">
+    <ion-card *ngFor="let recipe of randomRecipe">
       <div *ngIf="!isClicked">
-        <img alt="Recipe" src="{{recipe.strMealThumb}}" height="230" />
+        <img
+          alt="Recipe"
+          src="{{recipe.strMealThumb}}"
+          height="230"
+          (click)="toggleContent()"
+        />
         <ion-card-header>
           <ion-card-title>{{recipe.strMeal}}</ion-card-title>
           <a href="{{recipe.strYoutube}}">Link To YouTube Video</a>
-          <p>Click on Card to reveal instructions</p>
+          <p>Click on image to reveal instructions</p>
+          <ion-button (click)="shareRecipe(recipe)">Click to share</ion-button>
         </ion-card-header>
       </div>
 
-      <div *ngIf="isClicked">
+      <div *ngIf="isClicked" (click)="toggleContent()">
         <ion-card-content>{{recipe.strInstructions}}</ion-card-content>
         <ion-list>
           <h3>Ingredients : Measurement</h3>
-          <p>{{recipe.strIngredient1}}  {{recipe.strMeasure1}}</p>
-          <p>{{recipe.strIngredient2}}  {{recipe.strMeasure2}}</p>
-          <p>{{recipe.strIngredient3}}  {{recipe.strMeasure3}}</p>
-          <p>{{recipe.strIngredient4}}  {{recipe.strMeasure4}}</p>
-          <p>{{recipe.strIngredient5}}  {{recipe.strMeasure5}}</p>
-          <p>{{recipe.strIngredient6}}  {{recipe.strMeasure6}}</p>
-          <p>{{recipe.strIngredient7}}  {{recipe.strMeasure7}}</p>
-          <p>{{recipe.strIngredient8}}  {{recipe.strMeasure8}}</p>
-          <p>{{recipe.strIngredient9}}  {{recipe.strMeasure9}}</p>
-          <p>{{recipe.strIngredient10}}  {{recipe.strMeasure10}}</p>
-          <p>{{recipe.strIngredient11}}  {{recipe.strMeasure11}}</p>
-          <p>{{recipe.strIngredient12}}  {{recipe.strMeasure12}}</p>
-          <p>{{recipe.strIngredient13}}  {{recipe.strMeasure13}}</p>
-          <p>{{recipe.strIngredient14}}  {{recipe.strMeasure14}}</p>
-          <p>{{recipe.strIngredient15}}  {{recipe.strMeasure15}}</p>
-          <p>{{recipe.strIngredient16}}  {{recipe.strMeasure16}}</p>
-          <p>{{recipe.strIngredient17}}  {{recipe.strMeasure17}}</p>
-          <p>{{recipe.strIngredient18}}  {{recipe.strMeasure18}}</p>
-          <p>{{recipe.strIngredient19}}  {{recipe.strMeasure19}}</p>
-          <p>{{recipe.strIngredient20}}  {{recipe.strMeasure20}}</p>
+          <p>{{recipe.strIngredient1}} {{recipe.strMeasure1}}</p>
+          <p>{{recipe.strIngredient2}} {{recipe.strMeasure2}}</p>
+          <p>{{recipe.strIngredient3}} {{recipe.strMeasure3}}</p>
+          <p>{{recipe.strIngredient4}} {{recipe.strMeasure4}}</p>
+          <p>{{recipe.strIngredient5}} {{recipe.strMeasure5}}</p>
+          <p>{{recipe.strIngredient6}} {{recipe.strMeasure6}}</p>
+          <p>{{recipe.strIngredient7}} {{recipe.strMeasure7}}</p>
+          <p>{{recipe.strIngredient8}} {{recipe.strMeasure8}}</p>
+          <p>{{recipe.strIngredient9}} {{recipe.strMeasure9}}</p>
+          <p>{{recipe.strIngredient10}} {{recipe.strMeasure10}}</p>
+          <p>{{recipe.strIngredient11}} {{recipe.strMeasure11}}</p>
+          <p>{{recipe.strIngredient12}} {{recipe.strMeasure12}}</p>
+          <p>{{recipe.strIngredient13}} {{recipe.strMeasure13}}</p>
+          <p>{{recipe.strIngredient14}} {{recipe.strMeasure14}}</p>
+          <p>{{recipe.strIngredient15}} {{recipe.strMeasure15}}</p>
+          <p>{{recipe.strIngredient16}} {{recipe.strMeasure16}}</p>
+          <p>{{recipe.strIngredient17}} {{recipe.strMeasure17}}</p>
+          <p>{{recipe.strIngredient18}} {{recipe.strMeasure18}}</p>
+          <p>{{recipe.strIngredient19}} {{recipe.strMeasure19}}</p>
+          <p>{{recipe.strIngredient20}} {{recipe.strMeasure20}}</p>
         </ion-list>
       </div>
     </ion-card>
 
     <ion-card [routerLink]="['/search']">
-      <img class="img" alt="Search Icon" src="..\..\assets\magnifier.png"/>
+      <img class="img" alt="Search Icon" src="..\..\assets\magnifier.png" />
       <ion-card-header>
         <ion-card-title>Search for Recipes</ion-card-title>
       </ion-card-header>
     </ion-card>
 
     <ion-card [routerLink]="['/recipes']">
-      <img class="img" alt="Food Icon" src="..\..\assets\restaurant.png"/>
+      <img class="img" alt="Food Icon" src="..\..\assets\restaurant.png" />
       <ion-card-header>
         <ion-card-title>Look at categories</ion-card-title>
       </ion-card-header>
     </ion-card>
 
     <ion-card [routerLink]="['/favourites']">
-      <img class="img" alt="Star Icon" src="..\..\assets\favourite.png"/>
+      <img class="img" alt="Star Icon" src="..\..\assets\favourite.png" />
       <ion-card-header>
         <ion-card-title>Browse Your Favourites</ion-card-title>
       </ion-card-header>

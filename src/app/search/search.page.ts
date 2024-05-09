@@ -47,7 +47,7 @@ export class SearchPage implements OnInit {
 async shareRecipe(recipe:any){
   await Share.share({
     title: recipe.strMeal,
-    text: recipe.strInstructions + '\nIngredients' + recipe.strIngredient1 + ' ' + recipe.strMeasure1 + '\n' + 
+    text: recipe.strInstructions + '\nIngredients\n' + recipe.strIngredient1 + ' ' + recipe.strMeasure1 + '\n' + 
     recipe.strIngredient2 + ' ' + recipe.strMeasure2 +'\n' + 
     recipe.strIngredient3 + ' ' + recipe.strMeasure3 +'\n' + 
     recipe.strIngredient4 + ' ' + recipe.strMeasure4 +'\n' + 
