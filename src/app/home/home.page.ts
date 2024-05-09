@@ -49,6 +49,7 @@ export class HomePage implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    //calls the random api function
     this.apiService.GetRandomRecipe().subscribe((data) => {
       this.randomRecipe = data.meals;
     });
@@ -58,6 +59,7 @@ export class HomePage implements OnInit {
     this.isClicked = !this.isClicked;
   }
 
+  //allows the user to share the selected recipe by web
   async shareRecipe(recipe:any){
     await Share.share({
       title: recipe.strMeal,

@@ -28,16 +28,12 @@ export class FavouritesPage implements OnInit {
     this.getFavourites();
     
   }
-
+  
+  //reads the local storage and checks how many items are added
+  //then it iterates through all items and saves it to the favourites array
   async getFavourites(){
-    /* for ( var i = 0, len = this.storage.length; i < len; i++ ) {
-      this.result = this.storage.get(i.toString());
-      this.favouriteRecipes += this.result;
-      console.log('Data loaded', this.result);
-    } */
     await this.storage.create();
     await this.storage.forEach((value: any, key: string) => {
-      //console.log('Key:', key, 'Value:', value);
       this.i++;
     });
 
@@ -56,7 +52,7 @@ export class FavouritesPage implements OnInit {
     this.favouriteRecipes = [];
     this.getFavourites();
   }
-  
+
   async shareRecipe(recipe:any){
     await Share.share({
       title: recipe.strMeal,

@@ -22,6 +22,7 @@ export class ApiService {
     return this.httpClient.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + categories)
   }
 
+  //displays all search results that match the user input
   searchRecipe(str:any):Observable<any>{
     return this.httpClient.get('https://www.themealdb.com/api/json/v1/1/search.php?s=' + str)
   }

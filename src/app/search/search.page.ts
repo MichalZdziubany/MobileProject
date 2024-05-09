@@ -28,6 +28,7 @@ export class SearchPage implements OnInit {
   ngOnInit() {
   }
 
+  //calls the search recipe method and saves to array
   searchRecipes(){
     this.apiService.searchRecipe(this.inputValue).subscribe((data) => {
       this.recipes = data.meals;
@@ -38,12 +39,15 @@ export class SearchPage implements OnInit {
     this.isClicked = !this.isClicked;
   }
 
+  //adds the selected recipe into local storage
   async addFavourite(recipe:any) {
     await this.storage.create();
     this.userObj = JSON.stringify(recipe);
     this.favRecipe = await this.storage.set(this.i.toString(), this.userObj);
     this.i++;
   }
+
+  //allows the user to share the selected recipe by web
 async shareRecipe(recipe:any){
   await Share.share({
     title: recipe.strMeal,

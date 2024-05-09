@@ -48,11 +48,13 @@ export class RecipesPage implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
+    //calls the categories api and returns it to array
     this.apiService.getCategories().subscribe((data) => {
       this.categories = data.categories;
     });
   }
 
+  //allows the user to call specific categories
   getSpecific(category: any) {
     this.str = category.strCategory;
     this.apiService.getSpecificCategories(this.str).subscribe((data2) => {
